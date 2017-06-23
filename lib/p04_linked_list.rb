@@ -17,6 +17,7 @@ class Link
     # and removes self from list.
     @next.prev = @prev
     @prev.next = @next
+    self
   end
 end
 
@@ -78,7 +79,12 @@ class LinkedList
   end
 
   def remove(key)
-    each { |node| node.remove if node.key == key }
+    each do |node|
+      if node.key == key
+        node.remove
+        return node
+      end
+    end
   end
 
   def each
@@ -91,7 +97,7 @@ class LinkedList
   end
 
   # uncomment when you have `each` working and `Enumerable` included
-  # def to_s
-  #   inject([]) { |acc, link| acc << "[#{link.key}, #{link.val}]" }.join(", ")
-  # end
+  def to_s
+    inject([]) { |acc, link| acc << "[#{link.key}, #{link.val}]" }.join(", ")
+  end
 end

@@ -1,4 +1,4 @@
-require 'rspec'
+ require 'rspec'
 require 'p05_hash_map'
 
 describe HashMap do
